@@ -73,4 +73,19 @@ class FilterForm extends Form
         $this->disableSecurityToken();
         $this->loadDataFrom($this->getController()->getRequest()->getVars());
     }
+
+    /**
+     * Setter for the form fields.
+     * silverstripe 4.3.3 compatibility
+     *
+     * @param FieldList $fields
+     * @return $this
+     */
+    public function setFields($fields)
+    {
+        $fields->setForm($this);
+        $this->fields = $fields;
+
+        return $this;
+    }
 }
